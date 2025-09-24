@@ -8,7 +8,7 @@ exports.transfer = (req, res) => {
   const userFrom = userModel.findUser(remetente);
   const userTo = userModel.findUser(destinatario);
   if (!userFrom || !userTo) {
-    return res.status(404).json({ message: 'Usuário remetente ou destinatário não encontrado.' });
+    return res.status(400).json({ message: 'Usuário remetente ou destinatário não encontrado.' });
   }
   const isFavorecido = userFrom.favorecidos.includes(destinatario);
   if (!isFavorecido && valor >= 5000) {
